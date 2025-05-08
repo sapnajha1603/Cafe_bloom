@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Café Bloom</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <style>
+      :root {
+        --primary: #8b4513; /* coffee brown */
+        --accent: #d4a373; /* caramel */
+        --cream: #fffbea; /* milk foam */
+        --green: #3d9970; /* herb garnish */
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Poppins', sans-serif;
+        background: var(--cream);
+        color: #333;
+        line-height: 1.6;
+        overflow-x: hidden;
+      }
+
+      /* ---------- Navigation ---------- */
+      nav {
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 3rem;
+        background: rgba(255, 254, 250, 0.8);
+        backdrop-filter: blur(6px);
+        z-index: 1000;
+      }
+
+      nav .logo {
+        font-family: 'Great Vibes', cursive;
+        font-size: 2rem;
+        color: var(--primary);
+      }
+
+      nav ul {
+        display: flex;
+        gap: 2rem;
+        list-style: none;
+      }
+
+      nav a {
+        text-decoration: none;
+        color: var(--primary);
+        font-weight: 600;
+        transition: color 0.3s;
+      }
+
+      nav a:hover {
+        color: var(--green);
+      }
+
+      /* ---------- Hero Section ---------- */
+      .hero {
+        background: url('https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+        height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        padding: 0 1rem;
+        position: relative;
+      }
+
+      .hero::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .hero-content {
+        position: relative;
+        color: #fff;
+        max-width: 800px;
+        animation: fadeIn 1.5s ease-in-out forwards;
+      }
+
+      .hero-content h1 {
+        font-family: 'Great Vibes', cursive;
+        font-size: 4.5rem;
+        margin-bottom: 0.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1.3rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .btn {
+        display: inline-block;
+        padding: 0.8rem 2rem;
+        background: var(--accent);
+        color: #fff;
+        border: none;
+        border-radius: 30px;
+        font-weight: 600;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background 0.3s;
+      }
+
+      .btn:hover {
+        background: var(--primary);
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* ---------- Section Generic ---------- */
+      section {
+        padding: 5rem 2rem;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      section h2 {
+        text-align: center;
+        font-family: 'Great Vibes', cursive;
+        font-size: 3rem;
+        color: var(--primary);
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      section h2::after {
+        content: '✿';
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: -15px;
+        font-size: 1.5rem;
+        color: var(--green);
+      }
+
+      /* ---------- Menu Section ---------- */
+      .menu-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+      }
+
+      .card img {
+        width: 100%;
+        height: 180px;
+        object-fit: cover;
+      }
+
+      .card-body {
+        padding: 1rem 1.2rem 2rem;
+        text-align: center;
+      }
+
+      .card-body h3 {
+        color: var(--primary);
+        margin-bottom: 0.5rem;
+      }
+
+      .price {
+        color: var(--green);
+        font-weight: 600;
+      }
+
+      /* ---------- About Section ---------- */
+      .about-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      .about-container img {
+        flex: 1 1 350px;
+        max-width: 100%;
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      }
+
+      .about-text {
+        flex: 1 1 350px;
+      }
+
+      .about-text p {
+        margin-bottom: 1rem;
+      }
+
+      /* ---------- Contact Section ---------- */
+      .contact {
+        background: url('https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+        color: #fff;
+        position: relative;
+      }
+
+      .contact::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.6);
+      }
+
+      .contact-content {
+        position: relative;
+        max-width: 700px;
+        margin: auto;
+        text-align: center;
+      }
+
+      .contact-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 1rem;
+        color: var(--accent);
+      }
+
+      .contact-content p {
+        margin-bottom: 2rem;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      .contact-info i {
+        margin-right: 0.5rem;
+        color: var(--accent);
+      }
+
+      /* ---------- Footer ---------- */
+      footer {
+        background: var(--primary);
+        color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+      }
+
+      footer a {
+        color: var(--accent);
+        text-decoration: none;
+      }
+
+      /* ---------- Media Queries ---------- */
+      @media (max-width: 768px) {
+        nav {
+          padding: 0.8rem 1.5rem;
+        }
+        nav ul {
+          gap: 1rem;
+        }
+        .hero-content h1 {
+          font-size: 3.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Navigation -->
+    <nav>
+      <div class="logo">Café Bloom</div>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="home">
+      <div class="hero-content">
+        <h1>Welcome to Café Bloom</h1>
+        <p>Sip. Savor. Smile. Your daily dose of warmth and flavor.</p>
+        <a href="#menu" class="btn">Explore Our Menu</a>
+      </div>
+    </header>
+
+    <!-- Menu Section -->
+    <section id="menu">
+      <h2>Our Specials</h2>
+      <div class="menu-grid">
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?auto=format&fit=crop&w=800&q=80" alt="Cappuccino" />
+          <div class="card-body">
+            <h3>Cappuccino</h3>
+            <p class="price">₹180</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1459755486867-b55449bb37f7?auto=format&fit=crop&w=800&q=80" alt="Espresso" />
+          <div class="card-body">
+            <h3>Espresso</h3>
+            <p class="price">₹120</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=800&q=80" alt="Latte" />
+          <div class="card-body">
+            <h3>Vanilla Latte</h3>
+            <p class="price">₹200</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="https://images.unsplash.com/photo-1550935115-9a3535219701?auto=format&fit=crop&w=800&q=80" alt="Mocha" />
+          <div class="card-body">
+            <h3>Mocha Delight</h3>
+            <p class="price">₹210</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+      <h2>About Us</h2>
+      <div class="about-container">
+        <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?auto=format&fit=crop&w=800&q=80" alt="Cafe Interior" />
+        <div class="about-text">
+          <p>
+            Nestled in the heart of town, Café Bloom is a cozy haven where rich
+            aromas mingle with vibrant florals. Our beans are ethically sourced
+            from sustainable farms and roasted to perfection, delivering a cup
+            that not only tastes good but feels good.
+          </p>
+          <p>
+            Step inside and you’ll find blooming bouquets, vintage wood, and
+            the gentle hum of conversation—all curated to make you feel right
+            at home. Whether you’re after a quiet nook to read or a lively spot
+            to catch up with friends, we’ve saved you a seat.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+      <div class="contact-content">
+        <h2>Contact & Visit</h2>
+        <div class="contact-info">
+          <p><i class="fas fa-map-marker-alt"></i> 123 Blossom Street, Pune</p>
+          <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+          <p><i class="fas fa-envelope"></i> hello@cafebloom.com</p>
+        </div>
+        <h3>Opening Hours</h3>
+        <p>Monday – Sunday | 8 AM – 10 PM</p>
+        <a href="mailto:hello@cafebloom.com" class="btn" style="margin-top: 1.5rem;">Say Hello</a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <p>
+        © 2025 Café Bloom | Crafted with <i class="fas fa-heart"></i> &amp;
+        <i class="fas fa-mug-hot"></i> by Sam
+      </p>
+    </footer>
+  </body>
+</html>
